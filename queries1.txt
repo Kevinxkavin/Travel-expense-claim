@@ -1,0 +1,44 @@
+
+
+create table ACCOUNT_TBL(
+Account_Number varchar2(10) primary key,
+Customer_name varchar2(15),
+Balance number(10,2)
+);
+
+
+INSERT INTO ACCOUNT_TBL (Account_number, Customer_name, Balance)
+VALUES ('1234567890', 'reddy', 52145);
+
+INSERT INTO ACCOUNT_TABL (Account_number, Customer_name, Balance)
+VALUES ('1234567891', 'mahesh', 0);
+
+INSERT INTO ACCOUNT_TABL (Account_number, Customer_name, Balance) 
+VALUES ('1234567893', 'dhanu', 1500);
+
+INSERT INTO ACCOUNT_TABL (Account_number, Customer_name, Balance)
+VALUES ('1234567894', 'sam', 15987);
+
+
+
+CREATE TABLE TRANSFER_TBL (
+    Transaction_ID NUMBER(4) PRIMARY KEY,
+    Account_Number VARCHAR2(10)
+        REFERENCES ACCOUNT_TBL(Account_Number),
+    Benifichary_Account_Number VARCHAR2(10)
+        REFERENCES ACCOUNT_TBL(Account_Number)
+);
+
+
+
+alter table TRANSFER_TBL add Transaction_date Date;
+alter table Transfer_tbl add Transaction_Amount number(10,2);
+
+
+create sequence transaction_seq
+START WITH 1000
+MINVALUE 1000
+MAXVALUE 9999
+INCREAMENT BY 1;
+
+select transaction_seq.NEXTVAL from dual;
